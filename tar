@@ -1,0 +1,21 @@
+1##Selected File and Extensions tar               ##tar -zxvf $3 --wildcards --no-anchored $@
+Usage: ./pxc tar 1 [TAR_FILE] [EXTENSIONS/FILENAME]
+Examp: ./pxc tar 1 file.tar.gz *.php *.sql file1.txt file2.txt
+
+2##Extract of the selected folder                 ##tar -zxvf $3 $@
+Usage: ./pxc tar 2 [TAR_FILE] [DIR]
+Examp: ./pxc tar 2 file.tar.gz homedir/public_html/UserFiles
+
+3##Extract of the all tar file                    ##for file in *.tar.gz\; do tar -zxf $file\; done
+
+4##Search for files inside tar                    ##tar tf $3 | grep $4
+Usage: ./pxc tar 4 [TAR_FILE] [SEARCH_FILE]
+Examp: ./pxc tar 4 file.tar.gz revision.txt
+
+
+##---Notes------------------------------------------------------------------------
+sadece belirli dizinleri tarlama
+tar --numeric-owner -cf /mnt/vz/private/wtr-270.tar.gz 270/etc 270/home 270/var/lib/mysql
+
+belli dizinler haric tar
+tar -cvf template.tar templates/ --exclude='images*' --exclude='files*'

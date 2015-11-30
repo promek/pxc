@@ -1,0 +1,17 @@
+1##Find string in the specified file extensions           ##find $3 -name "$4" -print0 | xargs -0 grep "$5" | awk '{print"" $1}' | cut -d: -f1
+Usage: ./pxc find 1 [DIR] [EXTENSIONS] [STRING]
+Examp: ./pxc find 1 /home *.php base64_decode
+
+2##Find the changed files in a directory specified day    ##find $3 -type f -mtime -$4 | xargs -r ls -l
+Usage: ./pxc find 2 [DIR] [DAY]
+Examp: ./pxc find 2 /home/ 10
+
+3##Last changed files in the directory                    ##find $3 -type f | xargs stat --format '%Y :%y %n' | sort -nr | cut -d: -f2- | head
+Usage: ./pxc find 3 [DIR]
+Examp: ./pxc find 3 /home
+
+
+## Notes------------------------------------------------------------------------
+find /home -name "*.php" -print0 | xargs -0 grep "base64_decode" | awk '{print"" $1}' | cut -d: -f1
+find /home/ -type f -mtime -10 | xargs -r ls -l
+find . -type f | xargs stat --format '%Y :%y %n' | sort -nr | cut -d: -f2- | head

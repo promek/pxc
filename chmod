@@ -1,0 +1,9 @@
+1##Change mode of files in the folder   ##find $3 -type f -exec chmod 644 {} \;
+Usage: ./pxc chmod 1 [DIR]
+Examp: ./pxc chmod 1 /tmp
+
+2##Change mode of dirs in the folder    ##find $3 -type d -exec chmod 755 {} \;
+Usage: ./pxc chmod 2 [DIR]
+Examp: ./pxc chmod 2 /tmp
+
+## Notes------------------------------------------------------------------------

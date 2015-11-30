@@ -1,0 +1,20 @@
+1##Active Connection Count                      ##netstat -ntu | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr | head
+
+2##Port Based Active Connection Count           ##netstat -ntu | grep :$3 | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr
+Usage: ./pxc netstat 2 [PORT]
+Examp: ./pxc netstat 2 8080
+
+3##Port Based Total Connection Count            ##netstat -n | grep :$3 | wc -l
+Usage: ./pxc netstat 3 [PORT]
+Examp: ./pxc netstat 3 8080
+
+4##Total SYN Connection Count                   ##netstat -n | grep :$3 | grep SYN | wc -l
+Usage: ./pxc netstat 4 [PORT]
+Examp: ./pxc netstat 4 8080
+
+5##Search Connect IP                            ##netstat -an | grep $3
+Usage: ./pxc netstat 5 [IP]
+Examp: ./pxc netstat 5 192.168.1.31
+
+
+## Notes------------------------------------------------------------------------

@@ -1,0 +1,28 @@
+1##List rule in the table                         ##iptables -xvn -L $3 --line-numbers
+Usage: ./pxc iptables 1 [TABLE]
+Examp: ./pxc iptables 1 INPUT
+
+2##Drop source ip selected table                  ##iptables -I $3 -s $5 -j DROP
+Usage: ./pxc iptables 2 [TABLE] [IP]
+Examp: ./pxc iptables 2 INPUT 192.168.1.31/32
+
+3##Drop port selected table                       ##iptables -I $3 -p tcp --destination-port $4 -j DROP
+Usage: ./pxc iptables 3 [TABLE] [PORT]
+Examp: ./pxc iptables 3 INPUT 80
+
+4##Drop ip:port selected table                    ##iptables -I $3 -s $4 -p tcp --destination-port $5 -j DROP
+Usage: ./pxc iptables 4 [TABLE] [IP] [PORT]
+Examp: ./pxc iptables 4 INPUT 192.168.1.31/32 80
+
+5##Delete rule selected line number               ##iptables -D $3 $4
+Usage: ./pxc iptables 5 [TABLE] [LINE_NUMBER]
+Examp: ./pxc iptables 5 INPUT 12
+
+6##Clear rules for all drop the selected table    ##for num in $(iptables -L $3 -xvn --line-numbers | grep "DROP" | awk '{print $1}'); do iptables -D $3 $num; done
+Usage: ./pxc iptables 6 [TABLE]
+Examp: ./pxc iptables 6 INPUT
+
+
+## Notes------------------------------------------------------------------------
+iptables -xvn -L INPUT --line-numbers
+iptables -D INPUT 1

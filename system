@@ -1,0 +1,24 @@
+1##Show kernel version and system architecture      ##uname -a
+
+2##Show name and version of distribution            ##head -n1 /etc/issue
+
+3##Show all partitions registered on the system     ##cat /proc/partitions
+
+4##Show RAM total seen by the system                ##grep MemTotal /proc/meminfo
+
+5##Show CPU(s) info                                 ##grep "model name" /proc/cpuinfo
+
+6##Show PCI info                                    ##lspci -tv
+
+7##Show USB info                                    ##lsusb -tv
+
+8##List mounted filesystems on the system           ##mount | column -t
+
+9##Show system reboot history                       ##last reboot
+
+a##Show amount of (remaining) RAM                   ##free -m
+
+b##Show free space on mounted filesystems           ##df -h
+
+## Notes------------------------------------------------------------------------
+* fdisk -l	Show disks partitions sizes and types (run as root)

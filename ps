@@ -1,0 +1,7 @@
+1##Top 5 Process Detail               ##ps aux | sort -nrk 3 | head -5 | awk '{print"/proc/" $2}' | xargs echo | xargs ls -al | grep 'proc\\|cwd\\|exe'
+
+2##List Processes by Cpu Usage        ##ps -e -o pcpu,cpu,nice,state,cputime,args --sort pcpu | sed '/^ 0.0 /d'
+
+3##List processes by Mem usage        ##ps -e -orss=,args= | sort -b -k1,1n | pr -TW$COLUMNS
+
+4##List processes in a hierarchy      ##ps -e -o pid,args --forest
